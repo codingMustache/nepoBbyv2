@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export async function POST({ request }) {
   const { name } = await request.json();
-  const sendName = name.split(' ').join('_')
+  const sendName = name.toLowerCase().split(' ').join('_')
   const result = await axios.get(`https://en.wikipedia.org/wiki/${sendName}`)
     .then(({ data }) => {
       const $ = cheerio.load(data)
